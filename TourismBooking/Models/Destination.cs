@@ -25,6 +25,5 @@ namespace TourismBooking.Models
         [StringLength(255)]
         public string? ImageUrl { get; set; }
 
-        public IEnumerable<Booking>? Bookings { get; set; }
     }
 }

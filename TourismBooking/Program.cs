@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<TourismBookingDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("RDS_MSSQL"));
+    var connectionString = builder.Configuration.GetConnectionString("RDS");
+    options.UseNpgsql(connectionString);
 });
 
 builder.Services.AddCors(options =>
@@ -38,7 +39,7 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection();
 //app.UseRouting();
-app.UseCors("AllowFrontEndApp");
+//app.UseCors("AllowFrontEndApp");
 
 app.UseAuthorization();
 
